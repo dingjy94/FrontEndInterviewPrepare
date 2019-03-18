@@ -5,5 +5,5 @@ addons:
           - aspell-en
           - aspell-fr
 
-script: ./bin/check-spelling.sh
+script: bash ./bin/check-spelling.sh
 
