@@ -1,0 +1,9 @@
+addons:
+  apt:
+      packages:
+          - aspell
+          - aspell-en
+          - aspell-fr
+
+script: ./bin/check-spelling.sh
+
