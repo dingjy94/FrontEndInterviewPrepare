@@ -26,10 +26,7 @@ Front end knowledge note, mainly for preparing the interview.
 - Event loop
 
 ### DOM (without jQuery)
-- Selecting or finding nodes using `document.querySelector` and in older browsers `document.getElementsByTagName`.
-- Traversal up and down – `Node.parentNode`, `Node.firstChild`, `Node.lastChild` and `Node.childNodes`.
-- Manipulation – add, remove, copy, and create nodes in the DOM tree. You should know operations such as how to change the text content of a node and toggle, remove or add a CSS classname
-- Performance – touching the DOM can be expensive when you have many nodes, you should at least know about document fragments and node caching.
+- [DOM Basic](/src/dom/dom.md)
 
 ### CSS
 -  Layout: sitting elements next to each other and how to place elements in two columns vs three columns
