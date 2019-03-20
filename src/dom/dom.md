@@ -8,7 +8,7 @@
 - [Change the text content and HTML markup of a node](#change-the-text-content-and-html-markup-of-a-node)
 - [Toggle, remove or add a CSS classname](#toggle-remove-or-add-a-css-classname)
 - [EventListener](#eventlistener)
-- [Performance – touching the DOM can be expensive when you have many nodes, you should at least know about document fragments and node caching](#performance-%E2%80%93-touching-the-dom-can-be-expensive-when-you-have-many-nodes-you-should-at-least-know-about-document-fragments-and-node-caching)
+- [Performance – touching the DOM can be expensive when you have many nodes, you should at least know about document fragments and node caching](#performance--touching-the-dom-can-be-expensive-when-you-have-many-nodes-you-should-at-least-know-about-document-fragments-and-node-caching)
 - [TODO: Different document, `document.importNode()`...](#todo-different-document-documentimportnode)
 
 ## Dom
@@ -208,13 +208,63 @@ See more on [Document Object Model (DOM)](https://developer.mozilla.org/en-US/do
 - return object is a **live**, **read-only** `CSSStyleDeclaration` object, should be used to inspect the element's style
 
 ## EventListener
+`target.addEventListener()`
 ```javascript
 target.addEventListener(type, listener[, options]);
-target.addEventListener(type, listener[, useCapture]);
+target.addEventListener(type, listener[, useCapture]); // old browser
 target.addEventListener(type, listener[, useCapture, wantsUntrusted  ]); // Gecko/Mozilla only
 ```
 - sets up a function that will be called whenever the specified event is delivered to the target
 - Common targets are `Element`, `Document`, and `Window`, but the target may be any object that supports events
+- @type: event type
+- @listener: an object implementing the `EventListener` interface, or a JavaScript function.
+- @options: An options object that specifies characteristics about the event listener.
+  - capture: `Boolean` indicate that events of this type will be dispatched to the registered listener before being dispatched to any `EventTarget` beneath it in the DOM tree.
+  - once: `Boolean`, indicate that the `listener` should be invoked at most once. If true, listener would be removed when invoked.
+  - passive: if true, listener function will never call `preventDefault`
+- @useCapture:
+  - indicating whether events will be dispatched to the registered listener before being dispatched to any EventTarget beneath it in the DOM tree
+  - This means the event will be activated in **capture phase**
+  - In short, this means this event will be activated earlier
+  - (About capture and bubbling)[https://stackoverflow.com/questions/7398290/unable-to-understand-usecapture-parameter-in-addeventlistener]
+
+- Safely detecting option: In old browsers, the 3rd parameter is `Boolean` (`useCapture`), so we need to handle this. We can do feature detection:
+  ```javascript
+  // check passive option
+  var passiveSupported = false;
+
+  try {
+    var options = {
+      get passive() { // This function will be called when the browser
+                      //   attempts to access the passive property.
+        passiveSupported = true;
+      }
+    };
+
+    window.addEventListener("test", options, options); // fake function
+    window.removeEventListener("test", options, options);
+  } catch(err) {
+    passiveSupported = false;
+  }
+
+  // actual event listener
+  someElement.addEventListener("mouseup", handleMouseUp, passiveSupported
+                                 ? { passive: true } : false);
+  ```
+- If listener is added during event dispatch, it will not active
+- Multiple **identical listeners** are registered on same target, the duplicate instances are discarded
+- `this` is `targetElement` (Arrow function do not have own `this` context)
+- Read More in [MDN](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+
+`EventTarget.removeEventListener()`
+```javascript
+target.removeEventListener(type, listener[, options]);
+target.removeEventListener(type, listener[, useCapture]);
+```
+- removes from the EventTarget a previously registered event listener
+- identified using a combination of the event type, the event listener function itself, and various optional options that may affect the matching process
+-  the only option `removeEventListener()` checks is the `capture/useCapture` flag.
+-  If an `EventListener` is removed from an `EventTarget` while it is processing an event, it will not be triggered by the current actions.
 ## Performance – touching the DOM can be expensive when you have many nodes, you should at least know about document fragments and node caching
 
 ## TODO: Different document, `document.importNode()`...
