@@ -7,7 +7,8 @@
 - [Add, remove, copy, and create nodes in the DOM tree.](#add-remove-copy-and-create-nodes-in-the-dom-tree)
 - [Change the text content and HTML markup of a node](#change-the-text-content-and-html-markup-of-a-node)
 - [Toggle, remove or add a CSS classname](#toggle-remove-or-add-a-css-classname)
-- [Performance – touching the DOM can be expensive when you have many nodes, you should at least know about document fragments and node caching](#performance--touching-the-dom-can-be-expensive-when-you-have-many-nodes-you-should-at-least-know-about-document-fragments-and-node-caching)
+- [EventListener](#eventlistener)
+- [Performance – touching the DOM can be expensive when you have many nodes, you should at least know about document fragments and node caching](#performance-%E2%80%93-touching-the-dom-can-be-expensive-when-you-have-many-nodes-you-should-at-least-know-about-document-fragments-and-node-caching)
 - [TODO: Different document, `document.importNode()`...](#todo-different-document-documentimportnode)
 
 ## Dom
@@ -31,7 +32,7 @@ The DOM was designed to be independent of any particular programming language, m
 
 `document.getElementById()`:
 - Returns an Element object representing the element whose id property matches the specified string.
-- only available as a method of the global document object, and not available as a method on all element objects in the DOM. Because `id` must be unique througout the DOM, no 'local' version needed.
+- only available as a method of the global document object, and not available as a method on all element objects in the DOM. Because `id` must be unique throughout the DOM, no 'local' version needed.
 
 `document.querySelector(selectors)`:
 - Returns the first Element within the document that matches the specified selector, or group of selectors
@@ -55,7 +56,7 @@ The following interfaces all inherit from Node’s methods and properties: `Docu
 
 `Node.firstChild`:
 - **Read-only** property returns the node's first child in the tree, or null if the node has no children.
-- will also return `#text` and `#comment` node. Any **whitespace** (single, multiple spaces, tabs, returns ...) will create a `#text` node. To avoid the issue, use `ParentNdoe.firstElementChild`
+- will also return `#text` and `#comment` node. Any **whitespace** (single, multiple spaces, tabs, returns ...) will create a `#text` node. To avoid the issue, use `ParentNode.firstElementChild`
 
 `ParentNode.firstElementChild`:
 - **Read-only** property returns the object's first child Element, or null if there are no child elements.
@@ -170,8 +171,50 @@ See more on [Document Object Model (DOM)](https://developer.mozilla.org/en-US/do
 
 `element.insertAdjacentText(position, DOMString);`
 -  inserts a given text node at a given position relative to the element
--
+
 ## Toggle, remove or add a CSS classname
+`element.className`
+- property of the Element interface gets and sets the value of the class attribute of the specified elemen
+- a string variable representing the class or space-separated classes of the current element
+
+`element.classList`
+-  **read-only** property that returns a **live** DOMTokenList collection of the class attributes of the element.
+-  `add(String [, ... ,])`: Adds the specified class values. If these classes already exist in the element's class attribute they are ignored.
+-  `remove(String [, ...])`: remove a class not exist doesn't throw error
+-  `item(Number)`: return the class value by index in the collection
+-  toggle(String [, force]):
+   -  one argument: toggle the value (remove if exist and return `false`, add if not exist and return `true`)
+   -  force: if is `true`, add the class value, else remove the class value
+- `contains(String)`
+- `replace(oldClass, newClass)`
+
+`HTMLElement.style`
+- get or set the **inline style** of an element
+- When `getting`, it returns a `CSSStyleDeclaration` object that contains a list of all styles properties for that element with values assigned for the attributes that are defined in the element's inline style attribute
+- set style
+  ```javascript
+     // Set multiple styles in a single statement
+    elt.style.cssText = "color: blue; border: 1px solid black";
+  // Or
+  elt.setAttribute("style", "color:red; border: 1px solid blue;");
+
+  // Set specific style while leaving other inline style values untouched
+  elt.style.color = "blue";
+  ```
+- only get **inline** style; to get all CSS properties, use `Window.getComputedStyle()`
+
+`Window.getComputedStyle(element [, pseudoElt])`
+- returns an object containing the values of **all** CSS properties of an element, after applying active stylesheets and resolving any basic computation those values may contain.
+- return object is a **live**, **read-only** `CSSStyleDeclaration` object, should be used to inspect the element's style
+
+## EventListener
+```javascript
+target.addEventListener(type, listener[, options]);
+target.addEventListener(type, listener[, useCapture]);
+target.addEventListener(type, listener[, useCapture, wantsUntrusted  ]); // Gecko/Mozilla only
+```
+- sets up a function that will be called whenever the specified event is delivered to the target
+- Common targets are `Element`, `Document`, and `Window`, but the target may be any object that supports events
 ## Performance – touching the DOM can be expensive when you have many nodes, you should at least know about document fragments and node caching
 
 ## TODO: Different document, `document.importNode()`...
