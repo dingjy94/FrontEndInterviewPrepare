@@ -8,8 +8,9 @@
 - [Change the text content and HTML markup of a node](#change-the-text-content-and-html-markup-of-a-node)
 - [Toggle, remove or add a CSS classname](#toggle-remove-or-add-a-css-classname)
 - [EventListener](#eventlistener)
-- [Performance – touching the DOM can be expensive when you have many nodes, you should at least know about document fragments and node caching](#performance--touching-the-dom-can-be-expensive-when-you-have-many-nodes-you-should-at-least-know-about-document-fragments-and-node-caching)
-- [TODO: Different document, `document.importNode()`...](#todo-different-document-documentimportnode)
+- [Performance – touching the DOM can be expensive when you have many nodes, you should at least know about document fragments and node caching](#performance-%E2%80%93-touching-the-dom-can-be-expensive-when-you-have-many-nodes-you-should-at-least-know-about-document-fragments-and-node-caching)
+    - [Cache nodes](#cache-nodes)
+- [Virtual DOM](#virtual-dom)
 
 ## Dom
 The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects. That way, programming languages can connect to the page.
@@ -265,6 +266,79 @@ target.removeEventListener(type, listener[, useCapture]);
 - identified using a combination of the event type, the event listener function itself, and various optional options that may affect the matching process
 -  the only option `removeEventListener()` checks is the `capture/useCapture` flag.
 -  If an `EventListener` is removed from an `EventTarget` while it is processing an event, it will not be triggered by the current actions.
+
+`EventTarget.dispatchEvent(event)`
+- Dispatches an `Event` at the specified `EventTarget`, (synchronously) invoking the affected EventListeners in the appropriate order.
+- `@event`: the `Event` object to be dispatched,  it is **not** possible to pass an event handler as argument
+- The return value is `false` if event is cancelable and at least one of the event handlers which handled this event called `Event.preventDefault()`. Otherwise it returns true.
+- simulate `trigger`
+  ```javascript
+  function triggerEvent(el, type){
+    if ('createEvent' in document) {
+      // modern browsers, IE9+
+      var e = document.createEvent('HTMLEvents');
+      e.initEvent(type, false, true);
+      el.dispatchEvent(e);
+    } else {
+      // IE 8
+      var e = document.createEventObject();
+      e.eventType = type;
+      el.fireEvent('on'+e.eventType, e);
+    }
+  }
+
+  var el = document.querySelector('input[type="text"]');
+  triggerEvent(el, 'mousedown');
+  ```
+
 ## Performance – touching the DOM can be expensive when you have many nodes, you should at least know about document fragments and node caching
 
-## TODO: Different document, `document.importNode()`...
+#### Browser Workflow <!-- omit in toc -->
+![browser_workflow](../static/image/dow_browserworkflow.png)
+- create DOM tree of nodes based on HTML file
+- Meanwhile, parse CSS (external, files and inline style)
+- build a render tree
+  - `attachment`: all nodes in DOM have an `attach` method, takes in style information and return a `render object`
+  - **Attachment is synchronous, each new nodes insertion to the DOM tree calls the "attach" method**
+- layout (reflow): Every node in the render tree is given the screen coordinates, the exact position where it should appear on the screen.
+- painting: traverse render tree and call each node's `paint()` method
+
+So, whenever make a DOM change, the whole process is redone. This can cause performance issue.
+
+`DocumentFragment`
+- represents a minimal document object that has no parent
+-  a lightweight version of `Document` that stores a segment of a document structure comprised of nodes
+-  **changes made to the fragment don't affect the document, cause reflow, or incur any performance impac**
+-  common use for `DocumentFragment` is to create one, assemble a DOM subtree within it, then append or insert the fragment into the DOM
+-  all of the nodes are inserted into the document at once, only one reflow and render is triggered
+-  can be created with `new DocumentFrament()` or `document.createDocumentFragment()`
+
+#### Cache nodes
+- Cache created DOM nodes, and use them as a pool of pre-assembled elements you can put back in the page as needed
+- ‘cache’ the response of queries you know you’ll use again in a variable
+- perform queries on all of the child elements of that cached element instead of the whole DOM
+- auto cache queries
+  ```javascript
+  // DOM wrapper
+  var cacheQuery = function(query) {
+    this.cache = this.cache || {};
+
+    if (!this.cache[query]) {
+      this.cache[query] = document.querySelectorAll(query);
+    }
+
+    return this.cache[query];
+  };
+
+  // Example
+  cacheQuery('.myForm input[type=submit]').forEach(node => ...)
+  ```
+## Virtual DOM
+The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is **kept in memory** and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation.
+
+This approach **enables the declarative API** of React: You tell React what state you want the UI to be in, and it makes sure the DOM matches that state. This abstracts out the attribute manipulation, event handling, and manual DOM updating that you would otherwise have to use to build your app.
+
+React creates a tree of custom objects representing a part of the DOM. It can manipulate these objects very quickly without actually touching the real DOM or going through the DOM API. Then, when it renders a component, it uses this virtual DOM to figure out what it needs to do with the real DOM to get the two trees to match. (like a patch)
+
+- inserts additional steps into the process, but it creates an elegant way to do minimal updates to the browser window and developer don't have to worry about the actual methods being used or even what needs to be updated and when
+- **VDOM itself is not faster than real DOM. The real benefit from Virtual DOM is it allows calculation the different between each changes and make make minimal changes into the HTML document (This can also be done without VDOM but is expensive)**
