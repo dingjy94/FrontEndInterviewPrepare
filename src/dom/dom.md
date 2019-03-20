@@ -107,7 +107,7 @@ See more on [Document Object Model (DOM)](https://developer.mozilla.org/en-US/do
 
 `node.removeChild(child)`
 - return removed child node
-- The removed child node still exists in memory, but is no longer part of the DOM. Use varaible to keep object reference so it can be reused.
+- The removed child node still exists in memory, but is no longer part of the DOM. Use variable to keep object reference so it can be reused.
 - If not keep reference, it will immediately become unusable and irretrievable, and will usually be automatically deleted from memory after a short time.
 - 2 different errors:
   - `Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.`: child existing on the DOM
@@ -158,7 +158,7 @@ See more on [Document Object Model (DOM)](https://developer.mozilla.org/en-US/do
 `Node.textContent`
 - represents the text content of a node and its descendants
 - if node is `document, DOCTYPE, notation`, return `null`
-- if `CDATA section, comment, processing instructon, text node` return the text inside
+- if `CDATA section, comment, processing instruction, text node` return the text inside
 - For other, return concatenation of `textContent` of every child node
 
 `innerText` vs `textContent`
@@ -175,7 +175,7 @@ See more on [Document Object Model (DOM)](https://developer.mozilla.org/en-US/do
 
 ## Toggle, remove or add a CSS classname
 `element.className`
-- property of the Element interface gets and sets the value of the class attribute of the specified elemen
+- property of the Element interface gets and sets the value of the class attribute of the specified element
 - a string variable representing the class or space-separated classes of the current element
 
 `element.classList`
@@ -308,7 +308,7 @@ So, whenever make a DOM change, the whole process is redone. This can cause perf
 `DocumentFragment`
 - represents a minimal document object that has no parent
 -  a lightweight version of `Document` that stores a segment of a document structure comprised of nodes
--  **changes made to the fragment don't affect the document, cause reflow, or incur any performance impac**
+-  **changes made to the fragment don't affect the document, cause reflow, or incur any performance impact**
 -  common use for `DocumentFragment` is to create one, assemble a DOM subtree within it, then append or insert the fragment into the DOM
 -  all of the nodes are inserted into the document at once, only one reflow and render is triggered
 -  can be created with `new DocumentFrament()` or `document.createDocumentFragment()`
