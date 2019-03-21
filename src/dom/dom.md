@@ -294,7 +294,7 @@ target.removeEventListener(type, listener[, useCapture]);
 ## Performance – touching the DOM can be expensive when you have many nodes, you should at least know about document fragments and node caching
 
 #### Browser Workflow <!-- omit in toc -->
-![browser_workflow](../static/image/dow_browserworkflow.png)
+![browser_workflow](../static/image/dom_browserworkflow.png)
 - create DOM tree of nodes based on HTML file
 - Meanwhile, parse CSS (external, files and inline style)
 - build a render tree
