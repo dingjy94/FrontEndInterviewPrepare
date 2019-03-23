@@ -1,4 +1,4 @@
-# FrontEndInterviewPrepare <!-- omit in toc -->
+# FrontEnd Interview Prepare <!-- omit in toc -->
 Front end knowledge note, mainly for preparing the interview.
 
 ## Contents <!-- omit in toc -->
@@ -15,15 +15,58 @@ Front end knowledge note, mainly for preparing the interview.
 
 ### JavaScript
 - Execution context, especially lexical scope and closures.
+  - how/why would you use closure
 - Hoisting, function & block scoping and function expressions & declarations.
+  - explain `hoisting`
 - Binding – specifically call, bind, apply and lexical this.
+  -  What's the notable difference `call` vs `apply`
+  -  Explain `Function.prototype.bind`
+- How `this` works
+  - Can you give an example of one of the ways that working with this has changed in ES6
 - Object prototypes, constructors and mixins.
+- What advantage is there for using the arrow syntax for a method in a constructor?
+- host objects vs native object
+  - `function Person(){}` vs `var person = Person` vs `var person = new Person()`
+- pros and cons of extending built-in JavaScript objects
+- Explain the difference between mutable and immutable objects.
+  - What is an example of an immutable object in JavaScript?
+  - What are the pros and cons of immutability?
+  - How can you achieve immutability in your own code?
+- ES6 class vs ES5 function constructors (may extend ES5 classes)
+- prototypal inheritance
 - Composition and high order functions.
-- Event delegation and bubbling.
+  - What is the definition of a higher-order function?
+- Event delegation and bubbling, capturing.
 - Type Coercion using typeof, instanceof and Object.prototype.toString.
+- What's the difference between feature detection, feature inference, and using the UA string?
 - Handling asynchronous calls with callbacks, promises, await and async.
-- When to use function declarations and expressions.
+- Explain the difference between synchronous and asynchronous functions.
+- When to use function declarations and expressions (differences and usage). (function maybe more)
+- anonymous function
+  - typical use
+- Can you offer a use case for the new arrow `=>` function syntax? How does this new syntax differ from other functions?
 - Event loop
+  - What is the difference between call stack and task queue?
+- `null` vs `undefined` vs undeclared
+  - How to check
+- What language constructions do you use for iterating over object properties and array items?
+- `Array.forEach` vs `Array.map()`
+  - why pick one versus other
+- `attribute` vs `property`
+- `==` vs `===`
+- `let`, `var` `const`
+- Can you give an example for destructuring an object or an array?
+- Can you give an example of generating a string with ES6 Template Literals?
+- Can you give an example of a curry function and why this syntax offers an advantage?
+- What are the benefits of using `spread syntax` and how is it different from `rest syntax`?
+- How can you share code between files?
+- Why you might want to create static class members?
+- same-origin policy
+- Why is it called a Ternary operator, what does the word "Ternary" indicate?
+- What is strict mode? What are some of the advantages/disadvantages of using it?
+- What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?
+- What tools and techniques do you use debugging JavaScript code?
+-
 
 ### DOM (without jQuery)
 - [DOM Basic](/src/dom/dom.md)
