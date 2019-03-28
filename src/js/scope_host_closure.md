@@ -4,7 +4,6 @@
   - [Why we need scope](#why-we-need-scope)
   - [IIFE (Immediately Invoked Function Expression)](#iife-immediately-invoked-function-expression)
   - [Block Scope](#block-scope)
-- [Reference](#reference)
 
 ## Scope
 Scope is a well-defiend set of rules for  storing variables in some location, and for finding those variables at a later time. It tell JS enginee where to store and look up variables.
@@ -57,5 +56,4 @@ In ES6, we have `let` and `const`.
 - for `let`, in for loop, the variable will be declared not just once for loop, but for **each iteration**, and will be initialized at each subsequent iteration with the value from the  end of previous iteration.
 
 Answer: `Original value was: undefined`, `New value is bar`
-## Reference
-- [Function Hoisting & Hoisting Interview Questions](https://medium.freecodecamp.org/function-hoisting-hoisting-interview-questions-b6f91dbc2be8)
+
