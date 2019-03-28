@@ -14,10 +14,7 @@ Front end knowledge note, mainly for preparing the interview.
 - [Data Structure and Algorithm](#data-structure-and-algorithm)
 
 ### JavaScript
-- Execution context, especially lexical scope and closures.
-  - how/why would you use closure
-- Hoisting, function & block scoping and function expressions & declarations.
-  - explain `hoisting`
+
 - Binding – specifically call, bind, apply and lexical this.
   -  What's the notable difference `call` vs `apply`
   -  Explain `Function.prototype.bind`
@@ -41,9 +38,6 @@ Front end knowledge note, mainly for preparing the interview.
 - What's the difference between feature detection, feature inference, and using the UA string?
 - Handling asynchronous calls with callbacks, promises, await and async.
 - Explain the difference between synchronous and asynchronous functions.
-- When to use function declarations and expressions (differences and usage). (function maybe more)
-- anonymous function
-  - typical use
 - Can you offer a use case for the new arrow `=>` function syntax? How does this new syntax differ from other functions?
 - Event loop
   - What is the difference between call stack and task queue?
@@ -54,7 +48,7 @@ Front end knowledge note, mainly for preparing the interview.
   - why pick one versus other
 - `attribute` vs `property`
 - `==` vs `===`
-- `let`, `var` `const`
+
 - Can you give an example for destructuring an object or an array?
 - Can you give an example of generating a string with ES6 Template Literals?
 - Can you give an example of a curry function and why this syntax offers an advantage?
