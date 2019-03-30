@@ -1,5 +1,23 @@
 # HTML
 
+- [HTML](#html)
+  - [HTML5](#html5)
+  - [Semantic markup: Knowing which HTML tags that best represent the content you are displaying](#semantic-markup-knowing-which-html-tags-that-best-represent-the-content-you-are-displaying)
+  - [Some important Tag attributes](#some-important-tag-attributes)
+  - [Knowing how to declare your doctype and head](#knowing-how-to-declare-your-doctype-and-head)
+  - [Accessibility concerns, for example, making sure an input checkbox has a larger responding area (use label “for”). Also, role=”button”, role=”presentation”, etc](#accessibility-concerns-for-example-making-sure-an-input-checkbox-has-a-larger-responding-area-use-label-for-also-rolebutton-rolepresentation-etc)
+
+## HTML5
+HTML (HyperText Markup Language) is a **markup language** used to tell browser how to structure the web page. HMTL5 is the newest version of HTML standard. Based on functions, HTML technologies can be classified into serval groups:
+- semantics: allow you to describe content precisely
+- connectivity: use new technology to communicate with server (Web socket...)
+- offline and storage: store data in client side (`localStorage`, `sessionStorage`...)
+- mulitmedia: `<video>` and `<audio>` are now first-class citizen
+- 2D/3D graphics: more ways to present graphics (canvas, SVG..)
+- performance: greater speed optimization and better use of hardware
+- multiple devices access: various input and output devices (camera, touch screen ...)
+- styling: More pretty and complicate style (support for CSS3)
+
 ## Semantic markup: Knowing which HTML tags that best represent the content you are displaying
 - basic structure for common HTML doc
   ```html

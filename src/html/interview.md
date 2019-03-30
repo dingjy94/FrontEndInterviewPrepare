@@ -1,5 +1,17 @@
 # HTML interview questions
-
+- [HTML interview questions](#html-interview-questions)
+  - [Describe the difference between `<script>`, `<script async>` and `<script defer>`.](#describe-the-difference-between-script-script-async-and-script-defer)
+  - [What are `data-*` attributes good for?](#what-are-data--attributes-good-for)
+  - [Why you would use a srcset attribute in an image tag? Explain the process the browser uses when evaluating the content of this attribute.](#why-you-would-use-a-srcset-attribute-in-an-image-tag-explain-the-process-the-browser-uses-when-evaluating-the-content-of-this-attribute)
+  - [What does a doctype do?](#what-does-a-doctype-do)
+  - [Why is it generally a good idea to position CSS `<link>`s between `<head></head>` and JS `<script>`s just before `</body>`? Do you know any exceptions?](#why-is-it-generally-a-good-idea-to-position-css-links-between-headhead-and-js-scripts-just-before-body-do-you-know-any-exceptions)
+  - [What kind of things must you be wary of when design or developing for multilingual sites?](#what-kind-of-things-must-you-be-wary-of-when-design-or-developing-for-multilingual-sites)
+  - [Consider HTML5 as an open web platform. What are the building blocks of HTML5?](#consider-html5-as-an-open-web-platform-what-are-the-building-blocks-of-html5)
+  - [Describe the difference between a cookie, sessionStorage and localStorage.](#describe-the-difference-between-a-cookie-sessionstorage-and-localstorage)
+  - [What is progressive rendering?](#what-is-progressive-rendering)
+  - [Have you used different HTML templating languages before?](#have-you-used-different-html-templating-languages-before)
+  - [What HTML features promote accessibility?](#what-html-features-promote-accessibility)
+-
 ## Describe the difference between `<script>`, `<script async>` and `<script defer>`.
 - `<script>` will block the HTML parsing, fetch the script and execute it immediately;
 - `<script async>` will fetch the script in parallel, and execute it immediately if available (block HTML parsing); the order of script execution is not promiesed, so only use on script don't depend on other scripts
@@ -61,6 +73,7 @@ It tell the browser which type and version of the document rules the document us
 - 2D/3D graphics: `<canvas>`, WebGL, SVG
 - performance
 - different devices access: camera, touch screen, geolocation..
+- styling: CSS3
 
 ## Describe the difference between a cookie, sessionStorage and localStorage.
 All these three are used to store data in client side.
