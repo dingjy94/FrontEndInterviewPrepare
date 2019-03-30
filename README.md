@@ -15,13 +15,7 @@ Front end knowledge note, mainly for preparing the interview.
 
 ### JavaScript
 
-- Binding – specifically call, bind, apply and lexical this.
-  -  What's the notable difference `call` vs `apply`
-  -  Explain `Function.prototype.bind`
-- How `this` works
-  - Can you give an example of one of the ways that working with this has changed in ES6
-- Object prototypes, constructors and mixins.
-- What advantage is there for using the arrow syntax for a method in a constructor?
+
 - host objects vs native object
   - `function Person(){}` vs `var person = Person` vs `var person = new Person()`
 - pros and cons of extending built-in JavaScript objects
@@ -29,8 +23,7 @@ Front end knowledge note, mainly for preparing the interview.
   - What is an example of an immutable object in JavaScript?
   - What are the pros and cons of immutability?
   - How can you achieve immutability in your own code?
-- ES6 class vs ES5 function constructors (may extend ES5 classes)
-- prototypal inheritance
+e
 - Composition and high order functions.
   - What is the definition of a higher-order function?
 - Event delegation and bubbling, capturing.
