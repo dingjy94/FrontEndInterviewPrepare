@@ -161,7 +161,7 @@ baz(); // 2, bar() still has reference to its lexical scope, this reference is c
   - benifits of function expressions
     - It's more clear because you must declare (assign to variable) it before invoke it, function declarations may sometime cause confusion
     - function expression clearly shows that you are "creating a object", and this is how JS function works (an object)
-    - function expression can be put under block scope (eg `if(){...}`) (*function declarations in blocks is technically invalid*), assign a to a prototype or as a property of some other object, and IIFE
+    - function expression can be put under block scope (eg `if(){...}`) (*function declarations in blocks is technically invalid before ES6, and in ES6 should work under strict mode [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#Block-level_functions)*), assign a to a prototype or as a property of some other object, and IIFE
     - function expression is invoked at runtime
     - Read more (Named function expressions demystified)[http://kangax.github.io/nfe/#expr-vs-decl], (Function Declarations vs. Function Expressions)[https://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/]
 
