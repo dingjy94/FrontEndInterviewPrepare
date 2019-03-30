@@ -106,6 +106,19 @@ HTML (HyperText Markup Language) is a **markup language** used to tell browser h
     - don't need to be in head
 
 
-## Accessibility concerns, for example, making sure an input checkbox has a larger responding area (use label “for”). Also, role=”button”, role=”presentation”, etc
+## Accessibility concerns
+Accessibility is the practice to make you website usable as many people as possible. It **not only benefits people with disabilities**, but is also good for SEO, mobile friendly and is also easy to develop with (if you pay attention to accessibility in early stage).
 
+There some features of HTML5 help you improve accessibility:
+- good semantics
+  - text content: use a good content structure of headings, paragraphs, lists
+  - page layout: don't use table to do layout; use appropriate sectioning elements like `<nav>`, `<article>`, `<footer>` instead of only use `<div>`
+  - UI controls: use links, buttons, form elements, and labels (`for`) appropriately
+  - use meaningful label text in links, buttons...
+- `alt` in image
+  - for Decoration only, use CSS if possible. If must use HTML, set `alt=""`
+  - Content: Provide the information the image provide brefily, If the image is described in the main content, `alt=""`
+  - Link: provide accessible link text
+  - Text in image: avoid that, if must, also supply the text in `alt`
 
+Use HTML5 semantics elements as much as possible. If you didn't find good fit elements or work on older browser, consider using [ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA).
