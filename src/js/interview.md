@@ -156,6 +156,21 @@ This is helpful in case such as React class components, because you may always p
 - ES6 class constructor's prototype cannot be reassigned and class methods don't have prototype
 - In ES5, we cannot subclass some built-in constructors
 
+## Explain the difference between mutable and immutable objects.
+Immutable object means you cannot change the value (properties) of the objects. That means if you want to track a states of the program, you must make a copy instead of mutate the object directely.
+
+## What is an example of an immutable object in JavaScript?
+You can use `Object.freeze()` to make an object immutable. However, this will only immutate the top-level properties of the object, so may need to loop through the object to freeze deeper properteis.
+
+## What are the pros and cons of immutability?
+pros:
+- make the program more predictable, less side effect. Mutable object may cause hidden side effect espicially when it is send to a functon as argument (The other part of program don't know whether the object is changed or not)
+- treat object as value, which means you can easily track and check state change (just use `===` to compare new and old status object); also, you can set object as a map key, and use the same value object (don't need to be same reference) to fetch the value
+cons:
+- Performance: each time you want to mutate the object, you have to make a copy and mutate the copy
+## How can you achieve immutability in your own code?
+- `Object.freeze()`: shallow immutable, when you want to mutate, you should copy the whole object
+- structural sharing: track and record the change, reuse unchanged value as much as possible (can implemented with tries), in production, you may want to use library such as immutable.js
 
 ## Reference
 - [Function Hoisting & Hoisting Interview Questions](https://medium.freecodecamp.org/function-hoisting-hoisting-interview-questions-b6f91dbc2be8)
