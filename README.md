@@ -26,7 +26,7 @@ Front end knowledge note, mainly for preparing the interview.
 - What's the difference between feature detection, feature inference, and using the UA string?
 - Handling asynchronous calls with callbacks, promises, await and async.
 - Explain the difference between synchronous and asynchronous functions.
-- Can you offer a use case for the new arrow `=>` function syntax? How does this new syntax differ from other functions?
+
 - Event loop
   - What is the difference between call stack and task queue?
 - `null` vs `undefined` vs undeclared
@@ -42,8 +42,7 @@ Front end knowledge note, mainly for preparing the interview.
 - Can you give an example of a curry function and why this syntax offers an advantage?
 - What are the benefits of using `spread syntax` and how is it different from `rest syntax`?
 - How can you share code between files?
-- Why you might want to create static class members?
-- same-origin policy
+
 - Why is it called a Ternary operator, what does the word "Ternary" indicate?
 - What is strict mode? What are some of the advantages/disadvantages of using it?
 - What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?
