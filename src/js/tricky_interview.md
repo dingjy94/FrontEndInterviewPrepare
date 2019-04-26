@@ -54,4 +54,4 @@ A.x().y().z();
 // what you can do to let this program output 'XYZ'?
 ```
 
-Answer: add `return this` in each function
+Answer: add `return this;` or `return A;` in each function
