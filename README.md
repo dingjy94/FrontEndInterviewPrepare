@@ -12,6 +12,7 @@ Front end knowledge note, mainly for preparing the interview.
 - [Network](#network)
 - [General Web Knowledge](#general-web-knowledge)
 - [Data Structure and Algorithm](#data-structure-and-algorithm)
+- [React](#react)
 
 ### JavaScript
 
@@ -60,6 +61,8 @@ Front end knowledge note, mainly for preparing the interview.
 -  Adaptive design – changing an element’s dimensions based on specific break points
 -  Specificity – how to calculate a selector’s specificity and how the cascade affects attributes
 -  Appropriate namespacing and naming of classnames
+
+[Interview Questions](src/css/interview.md)
 
 ### HTML
 - Semantic markup: Knowing which HTML tags that best represent the content you are displaying

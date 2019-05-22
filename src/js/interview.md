@@ -1,19 +1,26 @@
 # JavaScript Interview Question
 - [JavaScript Interview Question](#javascript-interview-question)
-  - [Lexical scope and closures.](#lexical-scope-and-closures)
-  - [how/why would you use closure](#howwhy-would-you-use-closure)
-  - [function & block scoping](#function--block-scoping)
-  - [function expressions & declarations.](#function-expressions--declarations)
-  - [anonymous function](#anonymous-function)
-  - [`let`, `var` `const`](#let-var-const)
-  - [Hoisting Questions](#hoisting-questions)
-  - [What's the notable difference `call` vs `apply`](#whats-the-notable-difference-call-vs-apply)
-  - [Explain `Function.prototype.bind`](#explain-functionprototypebind)
-  - [How `this` works](#how-this-works)
-  - [Can you give an example of one of the ways that working with this has changed in ES6](#can-you-give-an-example-of-one-of-the-ways-that-working-with-this-has-changed-in-es6)
-  - [Object prototypes, constructors and mixins.](#object-prototypes-constructors-and-mixins)
-  - [What advantage is there for using the arrow syntax for a method in a constructor?](#what-advantage-is-there-for-using-the-arrow-syntax-for-a-method-in-a-constructor)
-  - [ES6 class vs ES5 function constructors](#es6-class-vs-es5-function-constructors)
+  - [Gernal Interview Questions](#gernal-interview-questions)
+    - [Lexical scope and closures.](#lexical-scope-and-closures)
+    - [how/why would you use closure](#howwhy-would-you-use-closure)
+    - [function & block scoping](#function--block-scoping)
+    - [function expressions & declarations.](#function-expressions--declarations)
+    - [anonymous function](#anonymous-function)
+    - [`let`, `var` `const`](#let-var-const)
+    - [Hoisting Questions](#hoisting-questions)
+    - [What's the notable difference `call` vs `apply`](#whats-the-notable-difference-call-vs-apply)
+    - [Explain `Function.prototype.bind`](#explain-functionprototypebind)
+    - [How `this` works](#how-this-works)
+    - [Can you give an example of one of the ways that working with this has changed in ES6](#can-you-give-an-example-of-one-of-the-ways-that-working-with-this-has-changed-in-es6)
+    - [Object prototypes, constructors and mixins.](#object-prototypes-constructors-and-mixins)
+    - [What advantage is there for using the arrow syntax for a method in a constructor?](#what-advantage-is-there-for-using-the-arrow-syntax-for-a-method-in-a-constructor)
+    - [Can you offer a use case for the new arrow `=>` function syntax? How does this new syntax differ from other functions?](#can-you-offer-a-use-case-for-the-new-arrow--function-syntax-how-does-this-new-syntax-differ-from-other-functions)
+    - [ES6 class vs ES5 function constructors](#es6-class-vs-es5-function-constructors)
+    - [Why you might want to create static class members?](#why-you-might-want-to-create-static-class-members)
+    - [Explain the difference between mutable and immutable objects.](#explain-the-difference-between-mutable-and-immutable-objects)
+    - [What is an example of an immutable object in JavaScript?](#what-is-an-example-of-an-immutable-object-in-javascript)
+  - [What are the pros and cons of immutability?](#what-are-the-pros-and-cons-of-immutability)
+  - [How can you achieve immutability in your own code?](#how-can-you-achieve-immutability-in-your-own-code)
   - [Reference](#reference)
 
 ## Gernal Interview Questions
@@ -178,6 +185,7 @@ cons:
 ## How can you achieve immutability in your own code?
 - `Object.freeze()`: shallow immutable, when you want to mutate, you should copy the whole object
 - structural sharing: track and record the change, reuse unchanged value as much as possible (can implemented with tries), in production, you may want to use library such as immutable.js
+
 
 ## Reference
 - [Function Hoisting & Hoisting Interview Questions](https://medium.freecodecamp.org/function-hoisting-hoisting-interview-questions-b6f91dbc2be8)
