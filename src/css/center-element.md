@@ -139,3 +139,6 @@ In shot, set `margin-left` and `margin-right` to auto.
 ```
 
 For this example, grid is just similar to flexbox.
+
+## Reference
+[How to center things with style in CSS](https://medium.freecodecamp.org/how-to-center-things-with-style-in-css-dc87b7542689)
