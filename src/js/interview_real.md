@@ -100,8 +100,13 @@ class Subject {
     this.notifyObservers();
   }
 
-  addObserver(oberserver) {
-    this.observers.push(oberserver);
+  addObserver(observer) {
+    this.observers.push(observer);
+    return () => {
+      this.observers = this.observers.filter((o) => o !== observer);
+    };
+
+    // return an unsubscribe function
   }
 
   notifyObservers() {
