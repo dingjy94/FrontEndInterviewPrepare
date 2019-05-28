@@ -55,3 +55,15 @@ A.x().y().z();
 ```
 
 Answer: add `return this;` or `return A;` in each function
+
+4.
+What is the result of `true == 'true'`?
+
+Answer: False. Read [this ES5 rule](http://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3). Since `true` is boolean, the result is `ToNumber(true) === ToNumber('true')`, which turn to `1 === Nan`. By the way, compare anything (includes itself) to `Nan` is false.
+
+In short the rule is: If the two operands are not of the same type, JavaScript converts the operands then applies strict comparison. If either operand is a number or a boolean, the operands are converted to numbers if possible; else if either operand is a string, the other operand is converted to a string if possible.
+
+5.
+Result of `['1', '2', '3'].map(parseInt)`?
+
+Answer: `[1, Nan, Nan]`. `Array.map()` will transfer three parameters to the callback function (currentValue, index, array), and `parseInt` accept two parameters. So `parseInt('1', 0)` is 1, `parseInt('2', 1)` is Nan (If the radix is non-zero and less than 2 the function returns NaN without even looking at the string) and `parseInt('3', 2)` is Nan (3 is not valid for number base on 2).
