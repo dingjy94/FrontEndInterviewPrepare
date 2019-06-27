@@ -13,6 +13,7 @@ Front end knowledge note, mainly for preparing the interview.
 - [General Web Knowledge](#general-web-knowledge)
 - [Data Structure and Algorithm](#data-structure-and-algorithm)
 - [React](#react)
+- [Component Practice](#component-practice)
 
 ### JavaScript
 
@@ -106,6 +107,9 @@ Design the front end architecture of common applications. These questions are us
 ### React
 - [React Interview Questions](src/react/interview.md)
 
+### Component Practice
+Component practice with vanilla JavaScript
+- [Offcanvas](https://codepen.io/dingjy94/pen/zVEQPY?editors=1111)
 ## TODO LIST <!-- omit in toc -->
 - [ ] Add FCC questions
 
