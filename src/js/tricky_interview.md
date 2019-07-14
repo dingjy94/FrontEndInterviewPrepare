@@ -67,3 +67,7 @@ In short the rule is: If the two operands are not of the same type, JavaScript c
 Result of `['1', '2', '3'].map(parseInt)`?
 
 Answer: `[1, Nan, Nan]`. `Array.map()` will transfer three parameters to the callback function (currentValue, index, array), and `parseInt` accept two parameters. So `parseInt('1', 0)` is 1, `parseInt('2', 1)` is Nan (If the radix is non-zero and less than 2 the function returns NaN without even looking at the string) and `parseInt('3', 2)` is Nan (3 is not valid for number base on 2).
+
+6.
+Insert item to specific index in an array:
+`arr.splice(index, 0, item)`;
