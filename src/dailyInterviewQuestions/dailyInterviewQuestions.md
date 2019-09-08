@@ -103,3 +103,65 @@ Sub.__proto__ === Function.prototype;
 
 ### setTimeout vs Promise vs async/await
 setTimeout will schedule the callback into macrotask queue; Promise will schedule the task to microtask queue. The microtask queue is processed after callbacks as long as no other JavaScript is mid-execution, and at the end of each task. Any additional microtasks queued during microtasks are added to the end of the queue and also processed.
+
+### setTimeout vs Promise vs async/await order
+What is the result of following code?
+```javascript
+async function async1() {
+    console.log('async1 start');
+    await async2();
+    console.log('async1 end');
+}
+async function async2() {
+	console.log('async2');
+}
+
+console.log('script start');
+
+setTimeout(function() {
+    console.log('setTimeout');
+}, 0)
+
+async1();
+
+new Promise(function(resolve) {
+    console.log('promise1');
+    resolve();
+}).then(function() {
+    console.log('promise2');
+});
+console.log('script end');
+```
+
+```javascript
+// script start
+// async1 start
+// async2
+// promise1
+// script end
+// async1 end
+// promise2
+// setTimeout
+```
+An `async` function can contain an `await` expression that pauses the execution of the `async` function and waits for the passed Promise's resolution, and then resumes the `async` function's execution and evaluates as the resolved value. This means the expression after `await` will be wrapped into Promise:
+```javascript
+// async1 equal to:
+async function async1() {
+    console.log('async1 start');
+    Promise.resolve(async2()).then(() => onsole.log('async1 end'));
+}
+```
+[more detail](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/7)
+
+### flatten array and remove duplicate
+```javascript
+// Flatten following array, remove duplicate and sort in ascend order
+// const arr = [[1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14]]]], 10];
+
+// use arr flat
+[...new Set(arr.flat(Infinity))].sort((a, b) => a - b);
+
+// conver to string
+[...new Set(arr.toString().split(','))].map(Number).sort((a, b) => a - b);
+```
+[More about array](http://es6.ruanyifeng.com/#docs/array#数组实例的-flat，flatMap)
