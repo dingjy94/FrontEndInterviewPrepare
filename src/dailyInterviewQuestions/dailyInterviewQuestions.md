@@ -190,3 +190,4 @@ function _new(fn, ...arg) {
   - Interleave multiple request/response in parallel without blocking
   - Single TCP connection
   - Eliminate unnecessary latency, improbe utilization of available network capacity
+- [More about HTTP/2](https://developers.google.com/web/fundamentals/performance/http2/#request_and_response_multiplexing)
