@@ -165,3 +165,28 @@ async function async1() {
 [...new Set(arr.toString().split(','))].map(Number).sort((a, b) => a - b);
 ```
 [More about array](http://es6.ruanyifeng.com/#docs/array#数组实例的-flat，flatMap)
+
+### Is Promise constructor function sync or async? How about `then`?
+Constructor is sync, then is async.
+
+### Inplement `new(fn, ...arg)`
+```javascript
+function _new(fn, ...arg) {
+  const obj = Object.create(fn.prototype); // create a empty object whose _proto_ point to fn.prototype
+  const result = fn.apply(obj, ...arg); // bind this to the new obj
+  return result istanceof Object ? result : obj;
+}
+```
+
+1. Creates a blank, plain JavaScript object;
+2. Links (sets the constructor of) this object to another object;
+3. Passes the newly created object from Step 1 as the this context;
+4. Returns this if the function doesn't return its own object.
+
+### HTTP/2 Request & Response Multiplexing
+- In HTTP/1.x, need multiple TCP connection for multiple parallel requests => cause head-of-line blocking and inefficient use of TCP
+- In HTTP/2, allow client/server to break down HTTP meassage to independ frames => interleave => reassemble
+- Benefits
+  - Interleave multiple request/response in parallel without blocking
+  - Single TCP connection
+  - Eliminate unnecessary latency, improbe utilization of available network capacity
