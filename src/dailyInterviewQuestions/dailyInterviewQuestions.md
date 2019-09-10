@@ -191,3 +191,56 @@ function _new(fn, ...arg) {
   - Single TCP connection
   - Eliminate unnecessary latency, improbe utilization of available network capacity
 - [More about HTTP/2](https://developers.google.com/web/fundamentals/performance/http2/#request_and_response_multiplexing)
+
+### When is React `setState` asynchronous?
+Currently, setState is asynchronous inside event handlers. In React, both `this.state` and `this.props` update only after the reconciliation and flushing. This is because `setState` re-rendering synchronouly would be inefficient in many cases.
+
+[Read more](https://github.com/facebook/react/issues/11527#issuecomment-360199710).
+
+### About React setState: what is the output of following code?
+```javascript
+class Example extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      val: 0
+    };
+  }
+
+  componentDidMount() {
+    this.setState({val: this.state.val + 1});
+    console.log(this.state.val);    // 第 1 次 log
+
+    this.setState({val: this.state.val + 1});
+    console.log(this.state.val);    // 第 2 次 log
+
+    setTimeout(() => {
+      this.setState({val: this.state.val + 1});
+      console.log(this.state.val);  // 第 3 次 log
+
+      this.setState({val: this.state.val + 1});
+      console.log(this.state.val);  // 第 4 次 log
+    }, 0);
+  }
+
+  render() {
+    return null;
+  }
+};
+```
+`0 0 2 3`: React batches state updates that occur in event handlers and lifecycle methods. React will set `isBatchingUpdates` to true **React-controlled synthetic event handlers and lifecycle methods**, which means it will not update the state value at once (so this.state.val = 0). In `setTimeout`, the setState is just synchronous.
+
+### How `npm install` works?
+For npm 5.5.1
+1. run the project preinstall (if exist)
+2. Confirm the first level dependencies
+3. Extract modules
+   - confirm version
+   - download module
+   - if this module has devpendecies, repeat 1
+4. dedupe: remove the same dependencies (same version)
+5. Install modules, run modules' lifecycle (preinstall, install, postinstall)
+6. Run current pachage's lifecycle
+
+[Read More](https://www.zhihu.com/question/66629910)
+[Also about algorithm details](https://docs.npmjs.com/cli/install#algorithm)
