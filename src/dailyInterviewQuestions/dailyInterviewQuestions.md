@@ -244,3 +244,44 @@ For npm 5.5.1
 
 [Read More](https://www.zhihu.com/question/66629910)
 [Also about algorithm details](https://docs.npmjs.com/cli/install#algorithm)
+
+### Difference between `Object.prototype.toString.call()`, `instanceof` and `Array.isArray()`
+In a word, `instanceof` chech the prototype chain and cannot work througth iframe, `Object.prototype.toString.call()` and `Array.isArray()` are similar but `isArray` is an ES5 method.
+
+Read More:
+- [Difference between using Array.isArray and instanceof Array](https://stackoverflow.com/questions/22289727/difference-between-using-array-isarray-and-instanceof-array)
+- [Why use toString() to typecheck args that you can check with typeof?](https://stackoverflow.com/questions/9512661/why-use-tostring-to-typecheck-args-that-you-can-check-with-typeof)
+- [what's different between Object.prototype.toString.call and typeof](https://stackoverflow.com/questions/31459821/whats-different-between-object-prototype-tostring-call-and-typeof)
+- [MDN isArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString#Using_toString()_to_detect_object_class)
+- [Determining with absolute accuracy whether or not a JavaScript object is an array](http://web.mit.edu/jwalden/www/isArray.html)
+
+### Repaint & Reflow
+ - A repaint occurs when changes are made to an elements skin that changes visibility, but do not affect its layout. Examples of this include outline, visibility, or background color. According to Opera, repaint is expensive because the browser must verify the visibility of all other nodes in the DOM tree.
+ - A reflow is even more critical to performance because it involves changes that affect the layout of a portion of the page (or the whole page). Reflow of an element causes the subsequent reflow of all child and ancestor elements as well as any elements following it in the DOM.
+ - Improvement
+   - Reduce DOM manipulation times
+   - Reduce DOM depth
+   - Avoid complex CSS selector (which spend more CPU time)
+   - Change classes on the element you wish to style (as low in the dom tree as possible)
+   - Avoid setting multiple inline styles
+   - Apply animations to elements that are position fixed or absolute
+   - Trade smoothness for speed
+   - Avoid tables for layout (even minor changes will cause reflows of all other nodes in the table)
+ - Read More
+   - [REFLOWS & REPAINTS: CSS PERFORMANCE MAKING YOUR JAVASCRIPT SLOW?](http://www.stubbornella.org/content/2009/03/27/reflows-repaints-css-performance-making-your-javascript-slow/#tables)
+   - [Minimizing browser reflow](https://developers.google.com/speed/docs/insights/browser-reflow)
+   - [你真的了解回流和重绘吗](https://github.com/chenjigeng/blog/issues/4)
+
+### Observer Pattern vs Publish/Subscribe
+- Observer/Observable pattern is mostly implemented in a synchronous way, i.e. the observable calls the appropriate method of all its observers when some event occurs. The Publisher/Subscriber pattern is mostly implemented in an asynchronous way (using message queue).
+
+- In the Observer/Observable pattern, the observers are aware of the observable. Whereas, in Publisher/Subscriber, publishers and subscribers don't need to know each other. They simply communicate with the help of message queues.
+
+### Idea of Redux
+Pub/sub pattern to manage state.
+[Read Redux doc](https://redux.js.org/introduction/motivation)
+
+### Event loop in browser vs Node
+In Node11, they work in same way (microtask queue after every macrotask);
+In Node10 and previous version, depends on the timer of the microtask
+[浏览器与Node的事件循环(Event Loop)有何区别?](https://juejin.im/post/5c337ae06fb9a049bc4cd218)
