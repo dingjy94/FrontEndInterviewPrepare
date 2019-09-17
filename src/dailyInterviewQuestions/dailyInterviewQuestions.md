@@ -285,3 +285,24 @@ Pub/sub pattern to manage state.
 In Node11, they work in same way (microtask queue after every macrotask);
 In Node10 and previous version, depends on the timer of the microtask
 [浏览器与Node的事件循环(Event Loop)有何区别?](https://juejin.im/post/5c337ae06fb9a049bc4cd218)
+
+### In global scope, variable decleared with `const` and `let` are not in the global obect (eg. `window` in browser). Where it store? How to get it?
+```javascript
+var a = 12;
+let b = 1;
+const c = 2;
+
+console.log(window.a); // 12
+console.log(window.b); // undefined
+console.log(window.c); // undefined
+console.log(b); // 1
+console.log(c); // 2
+```
+- The variables are in a script scope.
+- Just don't use global object.
+
+### Both token and cookie are stored in header. So why there is no token hijacking?
+
+- Both don't work if attacked by XSS
+- For CSRF, the advantage of token is that developer should tell the browser to include the token in the request. In other word, browser will not automitically include token in the request like cookie.
+
