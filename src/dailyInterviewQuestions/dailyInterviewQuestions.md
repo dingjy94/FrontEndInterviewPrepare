@@ -306,3 +306,82 @@ console.log(c); // 2
 - Both don't work if attacked by XSS
 - For CSRF, the advantage of token is that developer should tell the browser to include the token in the request. In other word, browser will not automitically include token in the request like cookie.
 
+### Change following code so that it can output 0 - 9.
+```javascript
+for (var i = 0; i< 10; i++){
+	setTimeout(() => {
+		console.log(i);
+    }, 1000)
+}
+```
+
+Solution
+```javascript
+// solution1: setTimeout(func, ms, params...)
+
+for (var i = 0; i< 10; i++){
+	setTimeout((i) => {
+		console.log(i);
+    }, 1000, i)
+}
+
+// solution2: IIFE
+for (var i = 0; i< 10; i++){
+	setTimeout(((i) => {
+		console.log(i);
+    })(i), 1000)
+}
+
+// solution3: let
+for (let i = 0; i< 10; i++){
+	setTimeout(((i) => {
+		console.log(i);
+    })(i), 1000)
+}
+
+```
+
+### Is VDOM faster than DOM?
+[chinese material](https://www.zhihu.com/question/31809713/answer/53544875)
+
+### What is the output of the following code?
+```javascript
+var b = 10;
+(function b(){
+    b = 20;
+    console.log(b);
+})();
+
+// output
+ƒ b(){
+    b = 20;
+    console.log(b);
+}
+```
+
+1. In IIFE, the funtion is a **function expression**.
+2. In function expression, the name of the function is **not** bound in its enclosing environment. Instead, the name is is bound **inside** the body of the function. And this binding is a **constant binding**.
+3. In strict mode, there will be a warning.
+
+### Modify the code so that it output 10 or 20.
+```javascript
+var b = 10;
+(function b(){
+    b = 20;
+    console.log(b);
+})();
+
+// output 10
+var b = 10;
+(function (b){
+    console.log(b);
+    b = 20;
+})(b);
+
+// output 20
+var b = 10;
+(function b(){
+    var b = 20;
+    console.log(b);
+})();
+```
