@@ -385,3 +385,28 @@ var b = 10;
     console.log(b);
 })();
 ```
+
+### When will following code print 1?
+```javascript
+var a = ?;
+if (a == 1 && a == 2 && a == 3) {
+  console.log(1);
+}
+```
+
+Answer:
+```javascript
+// set toString()
+var a = {
+  i: 1,
+  toString() {
+    return a.i++
+  }
+}
+
+// set valueOf
+var a = {i : 1};
+a.valueOf = function() {
+  return a.i++;
+};
+```
